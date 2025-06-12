@@ -1,0 +1,486 @@
+.about {
+  padding: 5rem 0;
+  background: var(--dark-secondary);
+  position: relative;
+}
+
+.about::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at 70% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 30% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--gradient-primary);
+  border-radius: 2px;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.skills {
+  margin-top: 2rem;
+}
+
+.skillsTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.skillCategory h4 {
+  color: var(--primary-purple);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.skillCategory ul {
+  list-style: none;
+  padding: 0;
+}
+
+.skillCategory li {
+  color: var(--text-secondary);
+  padding: 0.25rem 0;
+  position: relative;
+  padding-left: 1rem;
+  transition: color 0.3s ease;
+}
+
+.skillCategory li::before {
+  content: "▸";
+  color: var(--primary-blue);
+  position: absolute;
+  left: 0;
+  transition: transform 0.3s ease;
+}
+
+.skillCategory li:hover {
+  color: var(--text-primary);
+}
+
+.skillCategory li:hover::before {
+  transform: translateX(3px);
+}
+
+.imageContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skillsAnimation {
+  position: relative;
+  width: 450px;
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Central Hub */
+.centralHub {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.hubCore {
+  width: 60px;
+  height: 60px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  animation: hubPulse 3s ease-in-out infinite;
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+}
+
+.hubRing {
+  position: absolute;
+  border: 2px solid var(--primary-purple);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+.hubRing:nth-child(2) {
+  width: 80px;
+  height: 80px;
+  animation: ringRotate 8s linear infinite;
+}
+
+.hubRing:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  animation: ringRotate 12s linear infinite reverse;
+}
+
+/* Skill Nodes */
+.skillNode {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background: var(--dark-accent);
+  border: 3px solid var(--primary-blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  animation: nodeOrbit 15s linear infinite;
+  animation-delay: var(--delay);
+  transform-origin: 225px 0;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+  transition: all 0.3s ease;
+}
+
+.skillNode::after {
+  content: attr(data-skill);
+}
+
+.skillNode:hover {
+  transform: scale(1.1);
+  border-color: var(--primary-purple);
+  box-shadow: 0 6px 25px rgba(139, 92, 246, 0.5);
+}
+
+.skillNode:nth-child(odd) {
+  border-color: var(--primary-purple);
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+}
+
+/* Data Flow Lines */
+.dataFlow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.dataLine {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+  opacity: 0.6;
+  animation: dataFlowPulse 4s ease-in-out infinite;
+}
+
+.dataLine1 {
+  top: 50%;
+  left: 10%;
+  width: 80%;
+  animation-delay: 0s;
+}
+
+.dataLine2 {
+  top: 30%;
+  left: 20%;
+  width: 60%;
+  transform: rotate(45deg);
+  animation-delay: 0.5s;
+  background: linear-gradient(90deg, transparent, var(--primary-purple), transparent);
+}
+
+.dataLine3 {
+  top: 70%;
+  left: 20%;
+  width: 60%;
+  transform: rotate(-45deg);
+  animation-delay: 1s;
+}
+
+.dataLine4 {
+  top: 50%;
+  left: 25%;
+  width: 50%;
+  transform: rotate(90deg);
+  animation-delay: 1.5s;
+  background: linear-gradient(90deg, transparent, var(--primary-purple), transparent);
+}
+
+.dataLine5 {
+  top: 40%;
+  left: 30%;
+  width: 40%;
+  transform: rotate(30deg);
+  animation-delay: 2s;
+}
+
+.dataLine6 {
+  top: 60%;
+  left: 30%;
+  width: 40%;
+  transform: rotate(-30deg);
+  animation-delay: 2.5s;
+  background: linear-gradient(90deg, transparent, var(--primary-purple), transparent);
+}
+
+.dataLine7 {
+  top: 35%;
+  left: 35%;
+  width: 30%;
+  transform: rotate(60deg);
+  animation-delay: 3s;
+}
+
+.dataLine8 {
+  top: 65%;
+  left: 35%;
+  width: 30%;
+  transform: rotate(-60deg);
+  animation-delay: 3.5s;
+  background: linear-gradient(90deg, transparent, var(--primary-purple), transparent);
+}
+
+/* Binary Rain */
+.binaryRain {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0.3;
+}
+
+.binaryColumn {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  font-family: "Courier New", monospace;
+  font-size: 0.8rem;
+  color: var(--primary-blue);
+  animation: binaryFall 6s linear infinite;
+}
+
+.column1 {
+  left: 10%;
+  animation-delay: 0s;
+}
+.column2 {
+  left: 25%;
+  animation-delay: 1s;
+  color: var(--primary-purple);
+}
+.column3 {
+  left: 40%;
+  animation-delay: 2s;
+}
+.column4 {
+  left: 55%;
+  animation-delay: 3s;
+  color: var(--primary-purple);
+}
+.column5 {
+  left: 70%;
+  animation-delay: 4s;
+}
+.column6 {
+  left: 85%;
+  animation-delay: 5s;
+  color: var(--primary-purple);
+}
+
+.binaryColumn span {
+  margin: 0.2rem 0;
+  opacity: 0.7;
+}
+
+/* Tech Icons */
+.techIcons {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.techIcon {
+  position: absolute;
+  font-size: 2rem;
+  animation: techIconFloat 8s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.techIcon:nth-child(1) {
+  top: 15%;
+  left: 15%;
+}
+
+.techIcon:nth-child(2) {
+  top: 20%;
+  right: 15%;
+}
+
+.techIcon:nth-child(3) {
+  bottom: 20%;
+  left: 20%;
+}
+
+.techIcon:nth-child(4) {
+  bottom: 15%;
+  right: 20%;
+}
+
+/* Animations */
+@keyframes hubPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.8);
+  }
+}
+
+@keyframes ringRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes nodeOrbit {
+  from {
+    transform: rotate(var(--angle)) translateX(180px) rotate(calc(-1 * var(--angle)));
+  }
+  to {
+    transform: rotate(calc(var(--angle) + 360deg)) translateX(180px) rotate(calc(-1 * (var(--angle) + 360deg)));
+  }
+}
+
+@keyframes dataFlowPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scaleX(1.2);
+  }
+}
+
+@keyframes binaryFall {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(500px);
+    opacity: 0;
+  }
+}
+
+@keyframes techIconFloat {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .skillsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .skillsAnimation {
+    width: 350px;
+    height: 350px;
+  }
+
+  .skillNode {
+    width: 50px;
+    height: 50px;
+    font-size: 0.7rem;
+    transform-origin: 175px 0;
+  }
+
+  @keyframes nodeOrbit {
+    from {
+      transform: rotate(var(--angle)) translateX(140px) rotate(calc(-1 * var(--angle)));
+    }
+    to {
+      transform: rotate(calc(var(--angle) + 360deg)) translateX(140px) rotate(calc(-1 * (var(--angle) + 360deg)));
+    }
+  }
+}
